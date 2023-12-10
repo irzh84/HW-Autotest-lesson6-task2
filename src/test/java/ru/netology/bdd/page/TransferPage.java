@@ -29,7 +29,7 @@ public class TransferPage {
     }
 
     public void makeTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
-        amountInput.setValue(amountToTransfer);
+        amountInput.setValue("5000");
         fromCardInput.setValue(cardInfo.getCardNumber());
         buttonTransfer.click();
     }
