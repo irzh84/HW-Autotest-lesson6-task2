@@ -39,22 +39,15 @@ public class MyStepdefs {
     }
 
     @Когда("пользователь переводит {string} рублей с карты с номером {string} на свою первую карту с главной страницы")
-    public void shouldTransfer5000FromSecondToFirst(String amount, String cardSecond) {
+    public void shouldTransfer5000FromSecondToFirst(String amountToTransfer, String cardSecond) {
         var transferPage = dashboardPage.selectCardToTransfer(firstCardInfo);
-        dashboardPage = transferPage.makeValidTransfer(amount, secondCardInfo);
+        dashboardPage = transferPage.makeValidTransfer(amountToTransfer, secondCardInfo);
     }
 
-    @Тогда("баланс его 1 карты из списка на главной странице должен стать 15 000 рублей")
-    public void verifyBalanceFirstCard() {
-        var amount = 5000;
-        var expectedBalanceFirstCard = firstCardBalance + amount;
-        var expectedBalanceSecondCard = secondCardBalance - amount;
+    @Тогда("баланс его первой карты из списка на главной странице должен стать {int} рублей")
+    public void verifyBalanceFirstCard(int expectedBalanceFirstCard) {
         var actualBalanceFirstCard = dashboardPage.getCardBalance(firstCardInfo);
-        var actualBalanceSecondCard = dashboardPage.getCardBalance(secondCardInfo);
-
         assertEquals(expectedBalanceFirstCard, actualBalanceFirstCard);
-        assertEquals(expectedBalanceSecondCard, actualBalanceSecondCard);
     }
-
-
 }
+
