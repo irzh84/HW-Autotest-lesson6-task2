@@ -39,9 +39,9 @@ public class MyStepdefs {
     }
 
     @Когда("пользователь переводит {string} рублей с карты с номером {string} на свою первую карту с главной страницы")
-    public void shouldTransfer5000FromSecondToFirst(String amountToTransfer, String cardSecond) {
+    public void shouldTransfer5000FromSecondToFirst(String amountToTransfer, String cardNumber) {
         var transferPage = dashboardPage.selectCardToTransfer(firstCardInfo);
-        dashboardPage = transferPage.makeValidTransfer(amountToTransfer, secondCardInfo);
+        transferPage.makeTransferForScenario(amountToTransfer, cardNumber);
     }
 
     @Тогда("баланс его первой карты из списка на главной странице должен стать {int} рублей")

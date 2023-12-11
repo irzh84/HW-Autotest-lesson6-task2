@@ -34,6 +34,12 @@ public class TransferPage {
         buttonTransfer.click();
     }
 
+    public void makeTransferForScenario(String amountToTransfer, String cardNumber) {
+        amountInput.setValue(amountToTransfer);
+        fromCardInput.setValue(cardNumber);
+        buttonTransfer.click();
+    }
+
     public void findErrorMessage(String expectedText) {
         errorMessage.shouldBe(text(expectedText), Duration.ofSeconds(15)).shouldBe(visible);
     }
